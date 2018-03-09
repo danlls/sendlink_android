@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">PasteLink</string>
+    <string name="title_connect">Connect</string>
+    <string name="scan_qr">Scan QR code</string>
+    <string name="send">Send</string>
+    <string name="url_hint">Enter text or URL</string>
+    <string name="connect_instruction">Connect by scanning the QR code on PasteLink Desktop.</string>
+    <string name="title_pastes">Pastes</string>
+    <string name="label_connected_status">Connected to: %1$s</string>
+    <string name="action_copy">Copy</string>
+    <string name="action_open">Open</string>
+    <string name="label_received">Received:</string>
+    <string name="title_all_paste">All Pastes</string>
+    <string name="action_delete">Delete</string>
+    <string name="received_time_today">Today at %1$s</string>
+    <string name="received_time_yesterday">Yesterday at %1$s</string>
+    <string name="empty_list">No paste received yet</string>
+</resources>
