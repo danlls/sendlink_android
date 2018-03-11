@@ -3,6 +3,8 @@ package com.danlls.daniel.pastelink.activities;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -11,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.danlls.daniel.pastelink.R;
@@ -36,6 +39,9 @@ public class ConnectFragment extends Fragment {
     int TCP_SERVER_PORT = 8080;
     String serverIp;
     String serverName;
+    Handler mHandler;
+
+    private static final int CANT_CONNECT = 0;
 
     @Nullable
     @Override
@@ -49,6 +55,10 @@ public class ConnectFragment extends Fragment {
                 startActivityForResult(intent, 1);
             }
         });
+
+        TextView bulletOne = view.findViewById(R.id.bullet_one);
+        bulletOne.setText(getString(R.string.bullet_item, "Ensure wifi is connected to the same network as PC."));
+        mHandler = new FragmentHandler(this);
         return view;
     }
 
@@ -121,12 +131,32 @@ public class ConnectFragment extends Fragment {
         @Override
         protected void onPostExecute(Boolean aBoolean) {
             super.onPostExecute(aBoolean);
+            ConnectFragment connectFragment = fragmentWeakReference.get();
             if(aBoolean){
                 Log.i("PasteLink: ", "Connection established");
-                ConnectFragment connectFragment = fragmentWeakReference.get();
                 connectFragment.startSocketActivity();
+            } else {
+                Log.i("PasteLink:", "Failed to connect");
+                connectFragment.mHandler.sendEmptyMessage(CANT_CONNECT);
             }
 
+        }
+    }
+
+    static class FragmentHandler extends Handler {
+        private final WeakReference<ConnectFragment> fragmentWeakReference;
+
+        FragmentHandler(ConnectFragment context) {fragmentWeakReference= new WeakReference<ConnectFragment>(context); }
+
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            ConnectFragment connectFragment = fragmentWeakReference.get();
+            switch(msg.what){
+                case CANT_CONNECT:
+                    Toast.makeText(connectFragment.getContext(), "Unable to connect. Please check your network connection.", Toast.LENGTH_SHORT).show();
+                    break;
+            }
         }
     }
 }
