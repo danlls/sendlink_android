@@ -22,12 +22,12 @@
             android:text="@string/label_received"/>
 
 
-        <com.danlls.daniel.pastelink.util.RecyclerViewEmptySupport
+        <com.danlls.daniel.sendlink.util.RecyclerViewEmptySupport
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/receivedRecyclerView">
 
-        </com.danlls.daniel.pastelink.util.RecyclerViewEmptySupport>
+        </com.danlls.daniel.sendlink.util.RecyclerViewEmptySupport>
 
         <TextView
             android:layout_width="wrap_content"

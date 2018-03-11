@@ -9,6 +9,6 @@
     <item
         android:id="@+id/navigation_paste"
         android:icon="@drawable/ic_content_paste_black_24dp"
-        android:title="@string/title_pastes"/>
+        android:title="@string/title_received"/>
 
 </menu>

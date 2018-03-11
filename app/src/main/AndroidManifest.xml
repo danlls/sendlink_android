@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.danlls.daniel.pastelink">
+    package="com.danlls.daniel.sendlink">
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_pastelink_launcher"
+        android:icon="@mipmap/sendlink_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_pastelink_launcher"
+        android:roundIcon="@mipmap/sendlink_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <meta-data android:name="com.google.android.gms.vision.DEPENDENCIES" android:value="barcode"/>
         <activity
-            android:name=".activities.MainActivity"
+            android:name="com.danlls.daniel.sendlink.activities.MainActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,23 +21,23 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.QrScanActivity"
-            android:parentActivityName=".activities.MainActivity">
+        <activity android:name="com.danlls.daniel.sendlink.activities.QrScanActivity"
+            android:parentActivityName="com.danlls.daniel.sendlink.activities.MainActivity">
             <!-- The meta-data tag is required if you support API level 15 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activities.MainActivity" />
+                android:value="com.danlls.daniel.sendlink.activities.MainActivity" />
         </activity>
 
         <!--  Beginning with Android 3.2 (API level 13), the "screen size" also changes when the device switches between portrait and landscape orientation. -->
-        <activity android:name=".activities.SocketActivity"
-            android:parentActivityName=".activities.MainActivity"
+        <activity android:name="com.danlls.daniel.sendlink.activities.SocketActivity"
+            android:parentActivityName="com.danlls.daniel.sendlink.activities.MainActivity"
             android:configChanges="orientation|screenSize"
             android:windowSoftInputMode="adjustResize">
             <!-- The meta-data tag is required if you support API level 15 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activities.MainActivity" />
+                android:value="com.danlls.daniel.sendlink.activities.MainActivity" />
         </activity>
     </application>
 

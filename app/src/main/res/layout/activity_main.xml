@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.danlls.daniel.pastelink.activities.MainActivity">
+    tools:context="com.danlls.daniel.sendlink.activities.MainActivity">
 
     <FrameLayout
         android:id="@+id/content"
