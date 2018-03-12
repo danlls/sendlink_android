@@ -3,4 +3,4 @@ Easy way to transfer text and URL between android phone and PC using local netwo
 Works without internet too!
 
 ## Feedback / Bug report
- - Email me @ daniellee468@gmail.com or create a new issue at (https://github.com/danlls/pastelink_android/issues)
+ - Email me @ daniellee468@gmail.com or create a new issue at (https://github.com/danlls/sendlink_android/issues)
