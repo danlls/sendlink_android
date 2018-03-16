@@ -1,5 +1,6 @@
 package com.danlls.daniel.sendlink.activities;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -58,7 +59,7 @@ public class ConnectFragment extends Fragment {
 
         TextView bulletOne = view.findViewById(R.id.bullet_one);
         bulletOne.setText(getString(R.string.bullet_item, "Ensure wifi is connected to the same network as PC."));
-        mHandler = new FragmentHandler(this);
+        mHandler = new FragmentHandler((MainActivity) getActivity());
         return view;
     }
 
@@ -144,17 +145,20 @@ public class ConnectFragment extends Fragment {
     }
 
     static class FragmentHandler extends Handler {
-        private final WeakReference<ConnectFragment> fragmentWeakReference;
+        private final WeakReference<MainActivity> mainActivityWeakReference;
 
-        FragmentHandler(ConnectFragment context) {fragmentWeakReference= new WeakReference<ConnectFragment>(context); }
+        FragmentHandler(MainActivity context) {
+            mainActivityWeakReference = new WeakReference<>(context);
+
+        }
 
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
-            ConnectFragment connectFragment = fragmentWeakReference.get();
+            MainActivity mainActivity = mainActivityWeakReference.get();
             switch(msg.what){
                 case CANT_CONNECT:
-                    Toast.makeText(connectFragment.getContext(), "Unable to connect. Please check your network connection.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(mainActivity, "Unable to connect. Please check your network connection.", Toast.LENGTH_SHORT).show();
                     break;
             }
         }
